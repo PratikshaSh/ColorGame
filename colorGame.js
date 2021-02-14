@@ -14,6 +14,9 @@ var squares = document.querySelectorAll(".square");
 //selecting a color from the given 6 colors
 var pickedColor = colors[3];
 var colorDisplay = document.getElementById("colorDisplay");
+var messageDisplay = document.querySelector("#message");
+
+
 colorDisplay.textContent = pickedColor;
 //loop thru squares and assign a color from the colors array
 for (var i = 0; i < squares.length; i++) {
@@ -27,9 +30,22 @@ for (var i = 0; i < squares.length; i++) {
 
         //compare color to pickedColor
         if (clickedColor === pickedColor) {
-            alert("Correct!");
+            messageDisplay.textContent = "Correct!";
+            changeColors(clickedColor);
         } else {
-            alert("WRONG!!!");
+            this.style.backgroundColor = "#232323";
+            messageDisplay.textContent = "Try Again";
         }
+
     });
+
+
+}
+
+function changeColors(color) {
+    //loop through all squares
+    for (var i = 0; i < squares.length; i++) {
+        //change each color to match given color
+        squares[i].style.backgroundColor = color;
+    }
 }

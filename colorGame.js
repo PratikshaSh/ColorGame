@@ -1,6 +1,7 @@
+var numSquares = 6;
 //create a list/array of colors
 //remember sapces in rgb format are important
-var colors = generateRandomColors(6);
+var colors = generateRandomColors(numSquares);
 
 //select all 6 of these squares
 var squares = document.querySelectorAll(".square");
@@ -10,10 +11,47 @@ var colorDisplay = document.getElementById("colorDisplay");
 var messageDisplay = document.querySelector("#message");
 var h1 = document.querySelector("h1");
 var resetButton = document.querySelector("#reset");
+var easyBtn = document.querySelector('#easyBtn');
+var hardBtn = document.querySelector('#hardBtn');
 
+easyBtn.addEventListener("click", function() {
+    hardBtn.classList.remove("selected");
+    easyBtn.classList.add("selected");
+    numSquares = 3;
+    colors = generateRandomColors(numSquares);
+    pickedColor = pickColor();
+    colorDisplay.textContent = pickedColor;
+    for (var i = 0; i < squares.length; i++) {
+        if (colors[i]) {
+            squares[i].style.backgroundColor = colors[i];
+        } else {
+            squares[i].style.display = "none";
+        }
+    }
+    h1.style.backgroundColor = "#232323";
+
+
+});
+
+hardBtn.addEventListener("click", function() {
+    easyBtn.classList.remove("selected");
+    hardBtn.classList.add("selected");
+    numSquares = 6;
+    colors = generateRandomColors(numSquares);
+    pickedColor = pickColor();
+    colorDisplay.textContent = pickedColor;
+    for (var i = 0; i < squares.length; i++) {
+
+        squares[i].style.backgroundColor = colors[i];
+        squares[i].style.display = "block";
+
+    }
+    h1.style.backgroundColor = "#232323";
+
+});
 resetButton.addEventListener("click", function() {
     //generate all new colors
-    colors = generateRandomColors(6);
+    colors = generateRandomColors(numSquares);
 
     //pick a new random color from array
     pickedColor = pickColor();
@@ -22,7 +60,9 @@ resetButton.addEventListener("click", function() {
     colorDisplay.textContent = pickedColor;
     //change colors of squares
     for (var i = 0; i < squares.length; i++) {
-        squares[i].style.backgroundColor = colors[i];
+        if (colors[i]) {
+            squares[i].style.backgroundColor = colors[i];
+        }
     }
     //change heading background color back to normal
     h1.style.backgroundColor = "#232323";

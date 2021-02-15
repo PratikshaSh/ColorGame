@@ -28,7 +28,7 @@ easyBtn.addEventListener("click", function() {
             squares[i].style.display = "none";
         }
     }
-    h1.style.backgroundColor = "#232323";
+    h1.style.backgroundColor = "rgb(165, 120, 231)";
 
 
 });
@@ -46,7 +46,7 @@ hardBtn.addEventListener("click", function() {
         squares[i].style.display = "block";
 
     }
-    h1.style.backgroundColor = "#232323";
+    h1.style.backgroundColor = "rgb(165, 120, 231)";
 
 });
 resetButton.addEventListener("click", function() {
@@ -65,7 +65,7 @@ resetButton.addEventListener("click", function() {
         }
     }
     //change heading background color back to normal
-    h1.style.backgroundColor = "#232323";
+    h1.style.backgroundColor = "rgb(165, 120, 231)";
 });
 
 
